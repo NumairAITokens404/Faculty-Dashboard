@@ -76,8 +76,8 @@ function renderPostcardCanvas(background, portrait) {
   context.font = '500 37px "DM Mono", monospace';
   context.fillText("CSB FRESHERS '26", 122, 240);
 
-  // The portrait retains its full frame; unused landscape/portrait space reveals the card background.
-  drawContained(context, portrait, 144, 432, 912, 954);
+  // A larger centred cover crop creates a full, photo-first keepsake layout.
+  drawCover(context, portrait, 72, 360, 1056, 1120);
 
   context.fillStyle = '#dcff65';
   context.font = '500 32px "DM Mono", monospace';
