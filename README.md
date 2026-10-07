@@ -1,6 +1,6 @@
 # JASHN Faculty Postcards
 
-A client-side static dashboard for creating 4 x 6 inch faculty postcards and downloading them as PDFs.
+A client-side static dashboard for creating 4 x 6 inch faculty postcards and downloading them as high-quality JPGs.
 
 ## Run locally
 
@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-The export button uses the CDN versions of html2canvas and jsPDF, so an internet connection is required when generating PDFs.
+All export processing happens in the browser; an internet connection is not required once the page has loaded.
 
 ## Deploy to Vercel
 

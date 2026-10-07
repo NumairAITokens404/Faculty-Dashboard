@@ -76,8 +76,8 @@ function renderPostcardCanvas(background, portrait) {
   context.font = '500 37px "DM Mono", monospace';
   context.fillText("CSB FRESHERS '26", 122, 240);
 
-  // A larger centred cover crop creates a full, photo-first keepsake layout.
-  drawCover(context, portrait, 72, 360, 1056, 1120);
+  // A modestly larger, uncropped frame keeps the portrait central without crowding the title or name.
+  drawContained(context, portrait, 120, 405, 960, 1000);
 
   context.fillStyle = '#dcff65';
   context.font = '500 32px "DM Mono", monospace';
@@ -111,13 +111,9 @@ photoInput.addEventListener('change', () => {
 
 button.addEventListener('click', async () => {
   if (!readyToExport()) return;
-  if (!window.jspdf) {
-    showToast('PDF tools are still loading. Please try again in a moment.');
-    return;
-  }
   const original = button.innerHTML;
   button.disabled = true;
-  button.innerHTML = '<span>Preparing your PDF…</span><span aria-hidden="true">•</span>';
+  button.innerHTML = '<span>Preparing your JPG…</span><span aria-hidden="true">•</span>';
   try {
     await document.fonts.ready;
     const [background, portrait] = await Promise.all([
@@ -125,15 +121,15 @@ button.addEventListener('click', async () => {
       loadImage(currentImageUrl),
     ]);
     const canvas = renderPostcardCanvas(background, portrait);
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF({ orientation: 'portrait', unit: 'in', format: [4, 6], compress: true });
-    pdf.addImage(canvas.toDataURL('image/jpeg', 0.96), 'JPEG', 0, 0, 4, 6, undefined, 'FAST');
     const slug = nameInput.value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'faculty';
-    pdf.save(`jashn-${slug}-postcard.pdf`);
-    showToast('Your faculty postcard PDF is ready.');
+    const download = document.createElement('a');
+    download.href = canvas.toDataURL('image/jpeg', 0.96);
+    download.download = `jashn-${slug}-postcard.jpg`;
+    download.click();
+    showToast('Your faculty postcard JPG is ready.');
   } catch (error) {
     console.error(error);
-    showToast('Could not create the PDF. Please try a smaller image.');
+    showToast('Could not create the JPG. Please try a smaller image.');
   } finally {
     button.innerHTML = original;
     button.disabled = !readyToExport();
