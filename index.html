@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#100816" />
+    <title>JASHN Faculty Postcards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">CSB FRESHERS '26 / ORGANISER TOOL</p>
+        <h1 id="page-title">Faculty<br /><em>postcards.</em></h1>
+        <p class="intro-copy">Make a keepsake-ready guest postcard in a few seconds. Add a faculty name and portrait, then export the final artwork as a high-resolution PDF.</p>
+        <div class="steps" aria-label="How it works">
+          <span><b>01</b> Add name</span>
+          <span><b>02</b> Upload portrait</span>
+          <span><b>03</b> Download PDF</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Postcard generator">
+        <form class="controls" id="postcard-form">
+          <div class="control-heading">
+            <p class="eyebrow">CREATE A CARD</p>
+            <p>Everything stays in your browser.</p>
+          </div>
+          <label for="faculty-name">Faculty name</label>
+          <input id="faculty-name" name="faculty-name" type="text" maxlength="52" placeholder="e.g. Dr. Aditi Sharma" autocomplete="off" />
+
+          <label for="portrait-upload">Faculty photograph</label>
+          <label class="upload-zone" for="portrait-upload" id="upload-label">
+            <input id="portrait-upload" name="portrait-upload" type="file" accept="image/png,image/jpeg,image/webp" />
+            <span class="upload-icon">+</span>
+            <span><strong>Choose an image</strong><small>PNG, JPG, or WEBP</small></span>
+          </label>
+          <p class="file-name" id="file-name" aria-live="polite">No image selected</p>
+
+          <button class="download-button" id="download-button" type="button" disabled>
+            <span>Download faculty PDF</span><span aria-hidden="true">↓</span>
+          </button>
+          <p class="hint">Best results: upload a vertical, well-lit portrait. The photo is fully shown inside the card.</p>
+        </form>
+
+        <div class="preview-panel">
+          <div class="preview-topline"><span>LIVE PREVIEW</span><span>4 × 6 IN</span></div>
+          <div class="postcard-frame">
+            <article class="postcard" id="postcard" aria-label="Faculty postcard preview">
+              <img class="card-background" src="disco-background.png" alt="" crossorigin="anonymous" />
+              <div class="card-shade"></div>
+              <header class="card-header">
+                <div class="jashn">JASHN</div>
+                <div class="event-line">CSB FRESHERS '26</div>
+              </header>
+              <div class="portrait-wrap">
+                <div class="portrait-placeholder" id="portrait-placeholder"><span>YOUR<br />PHOTO</span></div>
+                <img id="portrait-image" class="portrait-image" alt="Faculty portrait" />
+              </div>
+              <footer class="card-footer">
+                <div class="guest-label">THE GUEST</div>
+                <div class="faculty-display" id="faculty-display">FACULTY NAME</div>
+              </footer>
+            </article>
+          </div>
+          <p class="preview-note">PDF exports at 1200 × 1800 px - ideal for a 4 × 6 inch fridge magnet.</p>
+        </div>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+:root { --pink: #ff70cf; --lime: #dcff65; --ink: #fbf7ff; --muted: #b9afc2; --deep: #100816; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; color: var(--ink); background: radial-gradient(circle at 15% 15%, #2d123a 0, transparent 28%), #100816; font-family: "Space Grotesk", sans-serif; }
+.app-shell { width: min(1440px, 100%); margin: 0 auto; padding: 48px clamp(22px, 6vw, 96px) 72px; }
+.intro { max-width: 620px; }
+.eyebrow { margin: 0 0 13px; color: var(--lime); font: 500 11px/1.2 "DM Mono", monospace; letter-spacing: .13em; }
+h1 { margin: 0; font-size: clamp(58px, 8.5vw, 122px); line-height: .77; letter-spacing: -.085em; font-weight: 700; }
+h1 em { color: var(--pink); font-family: "Playfair Display", serif; font-weight: 900; letter-spacing: -.11em; }
+.intro-copy { max-width: 530px; margin: 34px 0 25px; color: #d8cedf; font-size: 16px; line-height: 1.6; }
+.steps { display: flex; flex-wrap: wrap; gap: 12px 20px; color: #d6cbdc; font: 12px "DM Mono", monospace; }
+.steps b { color: var(--pink); font-weight: 500; }
+.workspace { display: grid; grid-template-columns: minmax(270px, 360px) minmax(0, 1fr); gap: clamp(40px, 8vw, 125px); align-items: center; margin-top: 62px; }
+.controls { padding: 26px; background: #1a0f22cc; border: 1px solid #ffffff16; border-radius: 17px; box-shadow: 0 28px 80px #00000048; }
+.control-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; margin-bottom: 30px; }
+.control-heading p:last-child { max-width: 130px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.35; text-align: right; }
+label { display: block; margin: 18px 0 8px; color: #eee4f0; font: 500 13px "DM Mono", monospace; }
+input[type="text"] { display: block; width: 100%; padding: 14px 14px; border: 1px solid #ffffff26; border-radius: 8px; outline: none; background: #09060d; color: #fff; font: 500 16px "Space Grotesk", sans-serif; }
+input[type="text"]:focus { border-color: var(--pink); box-shadow: 0 0 0 3px #ff70cf1c; }
+.upload-zone { display: flex; align-items: center; gap: 13px; min-height: 90px; margin: 0; padding: 15px; border: 1px dashed #ffffff46; border-radius: 9px; cursor: pointer; transition: .2s ease; }
+.upload-zone:hover, .upload-zone.has-file { border-color: var(--lime); background: #dcff650b; }
+.upload-zone input { position: absolute; inline-size: 1px; block-size: 1px; opacity: 0; }
+.upload-icon { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; color: var(--deep); background: var(--lime); font-size: 24px; }
+.upload-zone strong, .upload-zone small { display: block; }
+.upload-zone strong { font-size: 14px; }
+.upload-zone small { margin-top: 3px; color: var(--muted); font: 11px "DM Mono", monospace; }
+.file-name { min-height: 16px; margin: 8px 0 24px; color: var(--muted); font: 11px "DM Mono", monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.download-button { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 16px 18px; border: 0; border-radius: 8px; color: #190d18; background: var(--pink); cursor: pointer; font: 700 14px "Space Grotesk", sans-serif; transition: transform .15s ease, opacity .15s ease; }
+.download-button:hover:not(:disabled) { transform: translateY(-2px); }.download-button:disabled { cursor: not-allowed; opacity: .36; }
+.hint { margin: 14px 1px 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+.preview-panel { width: min(100%, 580px); justify-self: center; }
+.preview-topline { display: flex; justify-content: space-between; margin-bottom: 10px; color: #aa9ead; font: 10px "DM Mono", monospace; letter-spacing: .1em; }
+.postcard-frame { padding: clamp(10px, 2vw, 18px); background: #f5eaff0d; border: 1px solid #ffffff22; box-shadow: 0 30px 80px #00000065; }
+.postcard { position: relative; aspect-ratio: 2 / 3; overflow: hidden; isolation: isolate; background: #17091a; }
+.card-background, .card-shade { position: absolute; inset: 0; width: 100%; height: 100%; }.card-background { object-fit: cover; z-index: -2; }.card-shade { z-index: -1; background: linear-gradient(180deg, #09000aaa 0%, #14071636 40%, #0b0616b8 100%); }
+.card-header { padding: clamp(20px, 5vw, 46px) clamp(20px, 7vw, 60px) 0; }.jashn { color: #ff75d3; font-family: Georgia, "Times New Roman", serif; font-size: clamp(44px, 9.6vw, 78px); font-style: italic; font-weight: 700; line-height: .78; letter-spacing: -.07em; text-shadow: 0 1px 0 #ffb5e7aa, 0 0 15px #ff47bd30; }.event-line { margin-top: 14px; color: var(--lime); font: 500 clamp(11px, 2vw, 17px)/1 "DM Mono", monospace; letter-spacing: .03em; }
+.portrait-wrap { position: absolute; top: 24%; right: 12%; left: 12%; bottom: 23%; overflow: hidden; }.portrait-placeholder { display: grid; height: 100%; place-items: center; color: #d6b9d5; border: 1px solid #ffffff28; font: 500 15px/1.25 "DM Mono", monospace; text-align: center; letter-spacing: .1em; }.portrait-image { display: none; width: 100%; height: 100%; object-fit: contain; }.portrait-image.active { display: block; }.portrait-image.active + * { display: none; }
+.card-footer { position: absolute; right: clamp(20px, 7vw, 60px); bottom: clamp(21px, 5vw, 48px); left: clamp(20px, 7vw, 60px); }.guest-label { color: var(--lime); font: 500 clamp(10px, 1.8vw, 15px) "DM Mono", monospace; letter-spacing: .035em; }.faculty-display { margin-top: 8px; color: #fff; font-size: clamp(24px, 5.2vw, 48px); font-weight: 700; letter-spacing: -.075em; line-height: .9; overflow-wrap: anywhere; text-transform: uppercase; }
+.preview-note { margin: 13px 0 0; color: #a99eae; font: 10px "DM Mono", monospace; text-align: center; }
+.toast { position: fixed; right: 20px; bottom: 20px; max-width: 310px; padding: 13px 15px; border-radius: 8px; background: var(--lime); color: #1a0f22; font: 600 13px "Space Grotesk", sans-serif; opacity: 0; transform: translateY(16px); pointer-events: none; transition: .25s ease; }.toast.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 760px) { .app-shell { padding-top: 32px; }.workspace { grid-template-columns: 1fr; margin-top: 46px; }.controls { order: 2; }.preview-panel { order: 1; width: min(100%, 470px); }.intro-copy { margin-top: 28px; } }
